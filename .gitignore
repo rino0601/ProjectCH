@@ -1,3 +1,6 @@
 #python
 *.py[co]
 *.sqlite3
+
+#justfile
+media/

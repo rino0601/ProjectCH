@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Django settings for ProjectCH project.
 
@@ -93,3 +94,5 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

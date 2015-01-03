@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Unit(models.Model):
-    sound_file = models.FileField()
+    sound_file = models.FileField(upload_to='sound')
     pronounce_text = models.TextField()
 
     class Meta(object):

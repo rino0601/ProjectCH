@@ -1,6 +1,10 @@
+# coding=utf-8
 # Create your views here.
+from django.shortcuts import redirect
+
 from django.views.generic import TemplateView
 from rest_framework import viewsets
+from rest_framework.decorators import list_route
 
 from chairmanhwang.serializers import *
 from models import *
@@ -16,6 +20,11 @@ class IndexView(TemplateView):
 class UnitViewSet(viewsets.ModelViewSet):
     queryset = Unit.objects.all()
     serializer_class = UnitSerializer
+
+    @list_route()
+    def sound(self, request, *args, **kwargs):
+        ext_ = kwargs['ext']
+        return redirect('/media/sound/%s' % ext_)
 
 
 class QueryViewSet(viewsets.ModelViewSet):
