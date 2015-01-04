@@ -5,19 +5,10 @@ from django.conf.urls import patterns, url, include
 
 from chairmanhwang import views
 from rest_framework import routers
-from rest_framework import urlpatterns as up
 
-
-class ExtendedDefaultRouter(routers.DefaultRouter):
-    def get_urls(self):
-        urls = super(ExtendedDefaultRouter, self).get_urls()
-        return up.apply_suffix_patterns(urls, r'(?P<ext>[^.][^/]+)$', False)
-
-
-router = ExtendedDefaultRouter()
+router = routers.DefaultRouter()
 router.register(r'unit', views.UnitViewSet)
 router.register(r'query', views.QueryViewSet)
-router.register(r'analects', views.AnalectsViewSet)
 
 urlpatterns = patterns('',
                        # Examples:
@@ -25,12 +16,12 @@ urlpatterns = patterns('',
                        # url(r'^blog/', include('blog.urls')),
 
                        # url(r'^admin/', include(admin.site.urls)),
-                       # url(r'^$', views.IndexView.as_view()),
+                       url(r'^$', views.IndexView.as_view()),
                        url(r'^api/', include(router.urls)), )
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-                            url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+                            url(r'^%s/(?P<path>.*)$' % settings.MEDIA_KEY, 'django.views.static.serve', {
                                 'document_root': settings.MEDIA_ROOT,
                             }),
                             url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {

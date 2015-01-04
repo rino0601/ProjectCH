@@ -44,7 +44,8 @@ INSTALLED_APPS = (
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
-    ]
+    ],
+    'UPLOADED_FILES_USE_URL': False,
 }
 
 MIDDLEWARE_CLASSES = (
@@ -95,4 +96,5 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_KEY = 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_KEY)
