@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'chairmanhwang',
     'rest_framework',
+    'rest_framework_swagger',
 )
 
 REST_FRAMEWORK = {
@@ -47,6 +48,10 @@ REST_FRAMEWORK = {
     ],
     'UPLOADED_FILES_USE_URL': False,
 }
+
+# SWAGGER_SETTINGS = {
+# 'api_path': '/', # As default. It will automatically detect api path and append it.
+# }
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

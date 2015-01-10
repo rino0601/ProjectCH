@@ -1,5 +1,6 @@
 # coding=utf-8
 # Create your views here.
+from django.conf import settings
 from django.core.files import File
 from django.shortcuts import redirect
 

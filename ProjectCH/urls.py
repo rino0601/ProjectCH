@@ -17,7 +17,8 @@ urlpatterns = patterns('',
 
                        # url(r'^admin/', include(admin.site.urls)),
                        url(r'^$', views.IndexView.as_view()),
-                       url(r'^api/', include(router.urls)), )
+                       url(r'^api/', include(router.urls)),
+                       url(r'^docs/', include('rest_framework_swagger.urls')), )
 
 if settings.DEBUG:
     urlpatterns += patterns('',
