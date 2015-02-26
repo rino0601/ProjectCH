@@ -1,17 +1,15 @@
 # coding=utf-8
 # Create your views here.
-from django.conf import settings
 from django.core.files import File
 from django.shortcuts import redirect
-
 from django.views.generic import TemplateView
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import detail_route
 from pydub import AudioSegment
 
-from chairmanhwang.serializers import *
-from models import *
+import serializers
+import models
 
 
 class IndexView(TemplateView):
@@ -24,8 +22,8 @@ class IndexView(TemplateView):
 
 
 class UnitViewSet(viewsets.ModelViewSet):
-    queryset = Unit.objects.all()
-    serializer_class = UnitSerializer
+    queryset = models.Unit.objects.all()
+    serializer_class = serializers.UnitSerializer
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -34,8 +32,8 @@ class UnitViewSet(viewsets.ModelViewSet):
 
 
 class QueryViewSet(viewsets.ModelViewSet):
-    queryset = Query.objects.all()
-    serializer_class = QuerySerializer
+    queryset = models.Query.objects.all()
+    serializer_class = serializers.QuerySerializer
 
     @detail_route()
     def generate(self, request, *args, **kwargs):
