@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'chairmanhwang',
     'rest_framework',
     'rest_framework_swagger',
+    'djangobower',
 )
 
 REST_FRAMEWORK = {
@@ -97,6 +98,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+)
+
+BOWER_INSTALLED_APPS = (
+    'angular-material',
+)
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),

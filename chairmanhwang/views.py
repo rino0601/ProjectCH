@@ -13,10 +13,10 @@ import models
 
 
 class IndexView(TemplateView):
-    template_name = "index.html"
+    template_name = "base.html"
 
     def get(self, request, *args, **kwargs):
-        if True:
+        if False:
             return redirect('/api/')
         return super(IndexView, self).get(request, *args, **kwargs)
 
