@@ -13,7 +13,7 @@ import models
 
 
 class IndexView(TemplateView):
-    template_name = "base.html"
+    template_name = "chairmanhwang/base.html"
 
     def get(self, request, *args, **kwargs):
         if False:

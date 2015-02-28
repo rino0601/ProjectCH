@@ -1,0 +1,70 @@
+{% load static %}
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" ng-app="CHApp">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'angular-material/angular-material.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'chairmanhwang/default.css' %}">
+    <!-- Angular Material Dependencies -->
+    <script type="text/javascript" src='{% static 'angular/angular.js' %}'></script>
+    <script type="text/javascript" src='{% static 'angular-animate/angular-animate.js' %}'></script>
+    <script type="text/javascript" src='{% static 'angular-aria/angular-aria.js' %}'></script>
+    <script type="text/javascript" src='{% static 'angular-material/angular-material.js' %}'></script>
+    <script type="text/javascript" src="{% static 'chairmanhwang/default.js' %}"></script>
+</head>
+<body layout="row" ng-controller="AppCtrl">
+<div layout="row" flex>
+
+    <md-sidenav layout="column"
+                class="md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$media('gt-sm')">
+        <md-toolbar>
+            <h1>Powered by ZeroPage</h1>
+        </md-toolbar>
+        <md-content layout="column" flex class="md-padding">
+
+            <md-list>
+                <md-item ng-repeat="menu in menus">
+                    <md-item-content>
+                        <div class="md-tile-left">
+                            <!--<img ng-src="{$ item.face $}" class="face" alt="{$ item.who $}">-->
+                        </div>
+                        <div class="md-tile-content">
+                            <md-button class="md-raised" flex layout="row" ng-href="#{$ menu.url $}">
+                                {$ menu.name $}
+                            </md-button>
+                        </div>
+                    </md-item-content>
+                </md-item>
+            </md-list>
+
+        </md-content>
+    </md-sidenav>
+
+    <div layout="column" layout-fill tabIndex="-1" role="main">
+        <md-toolbar layout="row">
+            <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+                <span class="visuallyhidden">Menu</span>
+            </button>
+            <h1>ProjectCH</h1>
+        </md-toolbar>
+
+        <md-content ng-view md-scroll-y class="contents md-padding ng-scope md-default-theme">
+            <md-card>
+                <md-card-content>
+                    <h2>개발중입니다</h2>
+
+                    <p>
+                        이 프로젝트는 개발중이며, 우선 안드로이드 앱에서 작동되는것을 최우선으로 합니다.<br>
+                        아래의 버튼은 테스트용 버튼으로, 아직 안드로이드 앱은 없습니다.
+                    </p>
+                    <a href="https://play.google.com/store/apps/details?id=lemon.apple.aladinisbna">
+                        <img alt="Get it on Google Play"
+                             src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png"/>
+                    </a>
+                </md-card-content>
+            </md-card>
+        </md-content>
+    </div>
+</div>
+</body>
+</html>
