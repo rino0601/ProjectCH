@@ -1,10 +1,11 @@
 # coding=utf-8
 from django.conf import settings
 from django.conf.urls import patterns, url, include
-from django.contrib import admin
+from rest_framework import routers
 
 from chairmanhwang import views
-from rest_framework import routers
+from chairmanhwang import admin
+
 
 router = routers.DefaultRouter()
 router.register(r'unit', views.UnitViewSet)
@@ -15,7 +16,7 @@ urlpatterns = patterns('',
                        # url(r'^$', 'ProjectCH.views.home', name='home'),
                        # url(r'^blog/', include('blog.urls')),
 
-                       url(r'^admin/', include(admin.site.urls)),
+                       url(r'^admin/', include(admin.admin_site.urls)),
                        url(r'^$', views.IndexView.as_view()),
                        url(r'^api/', include(router.urls)),
                        url(r'^docs/', include('rest_framework_swagger.urls')), )
